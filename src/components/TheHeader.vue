@@ -56,7 +56,7 @@ const logout = () => {
                         <RouterLink to="/" active-class="bg-primary">Home</RouterLink>
                     </li>
                     <li class="font-medium mt-1" @click="closeDrawer">
-                        <RouterLink to="/product-list" active-class="bg-primary">Product</RouterLink>
+                        <RouterLink to="/product-list" active-class="bg-primary text-primary-content">Product</RouterLink>
                     </li>
                 </ul>
             </div>
@@ -66,7 +66,7 @@ const logout = () => {
         </div>
         <div class="navbar-end">
             <div class="dropdown dropdown-bottom dropdown-end">
-                <div tabIndex="0" role="button" class="btn mr-4 btn-neutral rounded-lg">Theme</div>
+                <div tabIndex="0" role="button" class="btn mr-4 btn-neutral">Theme</div>
                 <ul tabIndex="0"
                     class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-[600px] grid grid-cols-5 gap-8">
                     <li v-for="(theme, index) in themes" :key="index">
