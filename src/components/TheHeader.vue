@@ -50,7 +50,7 @@ const logout = () => {
             <div class="drawer-side">
                 <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                    <li class="items-center font-bold text-xl">ADMIN</li>
+                    <li class="items-center font-bold text-xl">VueJS</li>
                     <li class="font-medium mt-1" @click="closeDrawer">
                         <RouterLink to="/" active-class="bg-primary text-primary-content hover:bg-primary">Home
                         </RouterLink>
@@ -64,7 +64,7 @@ const logout = () => {
             </div>
         </div>
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl">ADMIN</a>
+            <a class="btn btn-ghost text-xl">VueJS</a>
         </div>
         <div class="navbar-end">
             <div title="Change Theme" class="dropdown dropdown-end">

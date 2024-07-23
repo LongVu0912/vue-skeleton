@@ -5,7 +5,7 @@ const toastNotification = (
     message: string,
     type: ToastType,
     autoClose: number
-) => {
+) : void => {
     toast(message, {
         autoClose: autoClose,
         dangerouslyHTMLString: true,

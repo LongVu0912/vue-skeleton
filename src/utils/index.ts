@@ -1,2 +1,2 @@
-export { default as capitalizeFirstLetter } from "./capitalizeFirstLetter";
-export { default as toastNotification } from "./toastNotification";
+export { default as capitalizeFirstLetter } from "./capitalizeFirstLetter.ts";
+export { default as toastNotification } from "./toastNotification.ts";
