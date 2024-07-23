@@ -2,11 +2,11 @@
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
-    "devPath": "http://localhost:1420",
+    "devPath": "http://localhost:5173",
     "distDir": "../dist"
   },
   "package": {
-    "productName": "score-2021",
+    "productName": "Tauri App",
     "version": "0.0.0"
   },
   "tauri": {
@@ -19,7 +19,7 @@
     },
     "windows": [
       {
-        "title": "Score 2021",
+        "title": "Tauri App",
         "width": 1000,
         "height": 800
       }
