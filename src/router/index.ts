@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import ProductListView from "../views/ProductListView.vue";
+import PageNotFoundView from "../views/PageNotFoundView.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -11,11 +11,15 @@ const router = createRouter({
             component: HomeView,
         },
         {
-            path: "/product-list",
-            name: "product-list",
-            component: ProductListView,
+            path: "/:pathMatch(.*)*",
+            name: "not_found",
+            component: PageNotFoundView,
         },
     ],
+});
+
+router.beforeEach((_to, _from, next) => { 
+    next();
 });
 
 export default router;

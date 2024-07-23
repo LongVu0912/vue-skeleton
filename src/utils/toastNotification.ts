@@ -1,7 +1,11 @@
-import { toast } from "vue3-toastify";
+import { toast, ToastType } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
-const toastNotification = (message, type, autoClose) => {
+const toastNotification = (
+    message: string,
+    type: ToastType,
+    autoClose: number
+) => {
     toast(message, {
         autoClose: autoClose,
         dangerouslyHTMLString: true,

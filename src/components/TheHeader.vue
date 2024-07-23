@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { capitalizeFirstLetter } from '../utils/index.js';
+import { capitalizeFirstLetter } from '../utils/index.ts';
 
 const router = useRouter();
 
-const themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter", "dim", "nord", "sunset"];
+const themes: string[] = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter", "dim", "nord", "sunset"];
 const currentTheme = ref(localStorage.getItem('theme') || "light");
 
 const isDrawerOpen = ref(false);
@@ -18,7 +18,7 @@ onMounted(() => {
     document.documentElement.setAttribute('data-theme', currentTheme.value);
 });
 
-const changeTheme = (theme) => {
+const changeTheme = (theme: string) => {
     currentTheme.value = theme;
     localStorage.setItem('theme', currentTheme.value);
     document.documentElement.setAttribute('data-theme', currentTheme.value);
@@ -34,7 +34,7 @@ const logout = () => {
 </script>
 
 <template>
-    <div class="navbar bg-base-200">
+    <div class="navbar bg-base-100 shadow-sm">
         <div class="flex">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" v-model="isDrawerOpen" />
             <div class="drawer-content">
@@ -52,10 +52,12 @@ const logout = () => {
                 <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                     <li class="items-center font-bold text-xl">ADMIN</li>
                     <li class="font-medium mt-1" @click="closeDrawer">
-                        <RouterLink to="/" active-class="bg-primary">Home</RouterLink>
+                        <RouterLink to="/" active-class="bg-primary text-primary-content hover:bg-primary">Home
+                        </RouterLink>
                     </li>
                     <li class="font-medium mt-1" @click="closeDrawer">
-                        <RouterLink to="/product-list" active-class="bg-primary text-primary-content">Product
+                        <RouterLink to="/product-list" active-class="bg-primary text-primary-content hover:bg-primary">
+                            Product
                         </RouterLink>
                     </li>
                 </ul>
