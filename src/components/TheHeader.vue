@@ -29,7 +29,7 @@ const logout = () => {
 
 <template>
     <div class="navbar bg-base-100 shadow-md">
-        <div class="flex">
+        <div class="navbar-start">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" v-model="isDrawerOpen" />
             <div class="drawer-content">
                 <label for="my-drawer" class="btn drawer-button btn-square btn-ghost">
@@ -53,7 +53,7 @@ const logout = () => {
                 </ul>
             </div>
         </div>
-        <div class="flex-1">
+        <div class="navbar-center">
             <a class="btn btn-ghost text-xl">VueJS</a>
         </div>
         <div class="navbar-end">
