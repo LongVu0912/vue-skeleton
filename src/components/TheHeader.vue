@@ -1,28 +1,22 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { capitalizeFirstLetter } from '../utils/index.ts';
+import TheButtonTheme from './TheButtonTheme.vue';
 
 const router = useRouter();
 
-const themes: string[] = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter", "dim", "nord", "sunset"];
 const currentTheme = ref(localStorage.getItem('theme') || "light");
 
 const isDrawerOpen = ref(false);
 
-const closeDrawer = () => {
+const closeDrawer = (): void => {
     isDrawerOpen.value = false;
 };
 
-onMounted(() => {
+onMounted((): void => {
     document.documentElement.setAttribute('data-theme', currentTheme.value);
 });
 
-const changeTheme = (theme: string) => {
-    currentTheme.value = theme;
-    localStorage.setItem('theme', currentTheme.value);
-    document.documentElement.setAttribute('data-theme', currentTheme.value);
-};
 
 const logout = () => {
     localStorage.removeItem('token');
@@ -34,20 +28,15 @@ const logout = () => {
 </script>
 
 <template>
-    <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar bg-base-100 shadow-md">
         <div class="flex">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" v-model="isDrawerOpen" />
             <div class="drawer-content">
-                <label for="my-drawer" class="btn drawer-button btn-square btn-ghost"><svg
-                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                         class="inline-block w-5 h-5 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M4 6h16M4 12h16M4 18h16">
-                        </path>
-                    </svg>
+                <label for="my-drawer" class="btn drawer-button btn-square btn-ghost">
+                    <i class="fa-solid fa-bars fa-lg"></i>
                 </label>
             </div>
-            <div class="drawer-side">
+            <div class="drawer-side z-50">
                 <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                     <li class="items-center font-bold text-xl">VueJS</li>
@@ -56,7 +45,8 @@ const logout = () => {
                         </RouterLink>
                     </li>
                     <li class="font-medium mt-1" @click="closeDrawer">
-                        <RouterLink to="/product-list" active-class="bg-primary text-primary-content hover:bg-primary">
+                        <RouterLink to="/product-list"
+                                    active-class="bg-primary text-primary-content hover:bg-primary">
                             Product
                         </RouterLink>
                     </li>
@@ -67,28 +57,10 @@ const logout = () => {
             <a class="btn btn-ghost text-xl">VueJS</a>
         </div>
         <div class="navbar-end">
-            <div title="Change Theme" class="dropdown dropdown-end">
-                <div tabIndex="0" role="button" class="btn mr-2 btn-neutral">{{ capitalizeFirstLetter(currentTheme) }}
-                </div>
-                <div tabindex="0"
-                     class="dropdown-content z-[1] bg-base-200 text-base-content rounded-box top-px h-[28.6rem] max-h-[calc(100vh-10rem)] w-56 overflow-y-auto border border-white/5 shadow-2xl outline outline-1 outline-black/5 mt-16">
-                    <div class="grid grid-cols-1 gap-3 p-3">
-                        <span v-for="(theme, index) in themes" :key="index">
-                            <button class="btn btn-outline btn-block"
-                                    @click="changeTheme(theme)">{{ capitalizeFirstLetter(theme) }}</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <TheButtonTheme />
             <div class="btn btn-error" @click="logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-.drawer-side {
-    z-index: 1000;
-}
-</style>

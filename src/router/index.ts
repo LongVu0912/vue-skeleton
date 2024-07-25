@@ -18,7 +18,7 @@ const router = createRouter({
     ],
 });
 
-router.beforeEach((_to, _from, next) => { 
+router.beforeEach((_to, _from, next): void => {
     next();
 });
 
